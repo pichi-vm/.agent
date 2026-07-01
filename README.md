@@ -41,7 +41,9 @@ git submodule update --init --recursive
 ```
 
 **Important:** without this, `.agent/` is empty and Claude's `@import` silently
-loads nothing. CI checkouts must set `submodules: recursive`.
+loads nothing. This matters for anyone (human or agent) *working* in the repo —
+not for CI: build/test/lint jobs don't read `.agent/`, so CI checkouts don't need
+submodules unless a job specifically consumes the agent files.
 
 ## Updating
 
