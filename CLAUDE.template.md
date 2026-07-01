@@ -1,31 +1,24 @@
-# <repo> — <one-line purpose>
+# <repo>
 
-<Stack and versions — e.g. "Rust (stable), single crate" or
-"Rust (nightly-YYYY-MM-DD; artifact deps), workspace".>
-
-## Commands
-
-```sh
-cargo fmt --all -- --check
-RUSTFLAGS=-D warnings cargo clippy --all-targets --all-features
-RUSTFLAGS=-D warnings cargo test
-# plus, as this repo's CI runs them: hawkeye check · cargo deny check · gitlint
-```
-
-## Done
-
-Green on this repo's full CI job set (above) before reporting done.
+<!-- Include ONLY what an agent can't discover from Cargo.toml, README,
+     rust-toolchain.toml, ci.yml, or the code itself. Do NOT restate the
+     purpose, stack, edition, dependencies, features, or build/test/lint
+     commands — those live in their obvious places. ci.yml is the source of
+     truth for how to check the repo. -->
 
 ## Crates
 
-<one line per workspace member: name -> role. Omit for a single-crate repo.>
+<Workspaces only: one line per member -> its role (roles aren't in Cargo.toml).
+ Omit this section entirely for a single-crate repo.>
 
 ## Rules
 
-<repo-specific always/ask/never beyond the shared rules — e.g. dual-licensed or
-derived files, generated code, spec-authoritative docs.>
+<Repo-specific, non-discoverable only: interface contracts, invariants, boundaries
+ (always / ask-first / never), and any non-obvious gotcha for running the gate
+ (e.g. "boot tests need the patched cargo + KVM; see ci.yml"). Delete this
+ placeholder; if there's nothing non-obvious, omit the section.>
 
-<!-- Shared rules live in the .agent submodule. If .agent/ is empty, run:
+<!-- Shared rules are in the .agent submodule. If .agent/ is empty:
      git submodule update --init --recursive -->
 @.agent/karpathy/CLAUDE.md
 @.agent/pichi.md
