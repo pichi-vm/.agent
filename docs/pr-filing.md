@@ -4,10 +4,6 @@ A pull request presents a **finished proposal** for human reviewers: a series of
 logical commits rebased on `main`, described with Summary / Approach /
 Verification — not a stream of consciousness or a diary of how the work was done.
 
-After this file is on `.agent` `main`, Pull Request stamps each PR body with:
-
-`Policy: docs/pr-filing.md@<full-sha-of-this-file-on-main>`
-
 ## Commit series
 
 - Rebase onto current `main` before opening or updating the PR.
@@ -29,9 +25,11 @@ Required headings, in order:
    result. Omit chronology, false starts, and tooling narrative.
 3. **Verification** — How reviewers can tell it works: which checks, commands,
    or review steps. Prefer the repo’s CI workflow as the source of truth when
-   one exists. Note that every commit in the series is expected to be green.
-4. **Policy** — Final line only:
-   `Policy: docs/pr-filing.md@<sha>`
+   one exists. Every commit in the series must be green. Include this checked
+   checkbox (required assertion by the filer):
+
+   - [x] Tests (and the repo’s CI checks) were run and passed for every
+     commit in this series independently
 
 ## Title
 
@@ -43,11 +41,7 @@ Describe the finished change. Do not narrate how the work was produced.
 - Development history (iterations, “tried X then Y”, agent or tool play-by-play)
 - Internal process notes, bot roles, workstation names, or hosted coding-agent
   product names
+- Merge holds, personal approval gates, or other process notes that belong in
+  assistant chat only
 
 Those belong in private notes or separate house-rule docs, not in PR chrome.
-
-## Bootstrap
-
-While this file is not yet on `main`, the bootstrap PR may stamp
-`Policy: docs/pr-filing.md@bootstrap` (or the blob SHA of the file on the PR
-head). After merge, use the `main` tip SHA.
