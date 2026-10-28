@@ -4,37 +4,49 @@ A pull request presents a **finished proposal** for human reviewers: a series of
 logical commits rebased on `main`, described with Summary / Approach /
 Verification — not a stream of consciousness or a diary of how the work was done.
 
+Write the pull request **title**, **body**, and every **commit message** in
+simple, straightforward, humble English. A normal human reviewer should
+understand what changed and why without specialized shorthand. Prefer ordinary
+words. If you must use a specialized term or acronym, define it in the same
+title, body, or commit message the first time it appears.
+
 ## Commit series
 
 - Rebase onto current `main` before opening or updating the PR.
-- Every commit is a **logical** change with a clear Conventional Commit message.
-- **Tests (and the repo’s CI checks) must pass for every commit** in the series,
-  not only at the tip.
+- Every commit is a **logical** change with a clear Conventional Commit message
+  in simple, straightforward, humble English (same rule as titles and bodies).
+- **Tests (and the repo’s continuous integration checks) must pass for every
+  commit** in the series, not only at the tip.
 - **Fixup / “fix” commits are not permitted** in the published series. Fold
   corrections into the logical commits (interactive rebase / amend) before the
   PR is ready for review.
-- No stream-of-consciousness commits (scratch, WIP, “try again”, tool narrative).
+- No stream-of-consciousness commits (scratch, work in progress, “try again”,
+  tool narrative).
 
 ## Body shape
 
 Required headings, in order:
 
-1. **Summary** — What the change is, in plain words (a few sentences). State
-   the finished proposal, not a diary of attempts.
+1. **Summary** — What the change is, in simple, straightforward, humble English
+   (a few sentences). State the finished proposal, not a diary of attempts.
+   Avoid unexplained jargon.
 2. **Approach** — Only non-obvious decisions that explain the shape of the
-   result. Omit chronology, false starts, and tooling narrative.
+   result, still in simple, straightforward, humble English. Omit chronology,
+   false starts, and tooling narrative.
 3. **Verification** — How reviewers can tell it works: which checks, commands,
-   or review steps. Prefer the repo’s CI workflow as the source of truth when
-   one exists. Every commit in the series must be green. Include this checked
+   or review steps, described so a normal human can follow them. Prefer the
+   repo’s continuous integration workflow as the source of truth when one
+   exists. Every commit in the series must be green. Include this checked
    checkbox (required assertion by the filer):
 
-   - [x] Tests (and the repo’s CI checks) were run and passed for every
-     commit in this series independently
+   - [x] Tests (and the repo’s continuous integration checks) were run and
+     passed for every commit in this series independently
 
 ## Title
 
 Short, Conventional Commits style when practical (`type(scope): summary`).
-Describe the finished change. Do not narrate how the work was produced.
+Describe the finished change in simple, straightforward, humble English. Do not
+narrate how the work was produced.
 
 ## What not to put in titles or bodies
 
@@ -43,5 +55,9 @@ Describe the finished change. Do not narrate how the work was produced.
   product names
 - Merge holds, personal approval gates, or other process notes that belong in
   assistant chat only
+- Unexplained jargon, acronyms used as shorthand, or insider terms that a
+  reviewer would need outside context to understand (commit messages follow the
+  same ban under Commit series)
 
-Those belong in private notes or separate house-rule docs, not in PR chrome.
+Those belong in private notes or separate house-rule docs, not in the pull
+request title or body.
