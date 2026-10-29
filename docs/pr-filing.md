@@ -15,8 +15,9 @@ title, body, or commit message the first time it appears.
 - Rebase onto current `main` before opening or updating the PR.
 - Every commit is a **logical** change with a clear Conventional Commit message
   in simple, straightforward, humble English (same rule as titles and bodies).
-- **Tests (and the repo’s continuous integration checks) must pass for every
-  commit** in the series, not only at the tip.
+- **The developer must run all of the repo’s local tests on every commit** in
+  the series, not only at the tip, and they must pass. The repo’s continuous
+  integration checks are separate: they run on the PR after it opens.
 - **Fixup / “fix” commits are not permitted** in the published series. Fold
   corrections into the logical commits (interactive rebase / amend) before the
   PR is ready for review.
@@ -36,11 +37,12 @@ Required headings, in order:
 3. **Verification** — How reviewers can tell it works: which checks, commands,
    or review steps, described so a normal human can follow them. Prefer the
    repo’s continuous integration workflow as the source of truth when one
-   exists. Every commit in the series must be green. Include this checked
-   checkbox (required assertion by the filer):
+   exists. Include this checked checkbox. It means the developer ran all local
+   tests on every commit and they passed; it does not cover the continuous
+   integration checks, which run separately on the PR:
 
-   - [x] Tests (and the repo’s continuous integration checks) were run and
-     passed for every commit in this series independently
+   - [x] All local tests were run and passed for every commit in this series
+     independently
 
 ## Title
 
