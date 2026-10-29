@@ -15,9 +15,10 @@ title, body, or commit message the first time it appears.
 - Rebase onto current `main` before opening or updating the PR.
 - Every commit is a **logical** change with a clear Conventional Commit message
   in simple, straightforward, humble English (same rule as titles and bodies).
-- **The developer must run all of the repo’s local tests on every commit** in
-  the series, not only at the tip, and they must pass. The repo’s continuous
-  integration checks are separate: they run on the PR after it opens.
+- **The developer bot (the bot that wrote the code) must run all of the
+  repo’s local tests on every commit** in the series, not only at the tip,
+  and they must pass. The repo’s continuous integration checks are separate:
+  they run on the PR after it opens.
 - **Fixup / “fix” commits are not permitted** in the published series. Fold
   corrections into the logical commits (interactive rebase / amend) before the
   PR is ready for review.
@@ -37,12 +38,19 @@ Required headings, in order:
 3. **Verification** — How reviewers can tell it works: which checks, commands,
    or review steps, described so a normal human can follow them. Prefer the
    repo’s continuous integration workflow as the source of truth when one
-   exists. Include this checked checkbox. It means the developer ran all local
-   tests on every commit and they passed; it does not cover the continuous
-   integration checks, which run separately on the PR:
+   exists. Include this checkbox, unticked when the PR is filed. It means the
+   developer bot ran all local tests on every commit and they passed; it does
+   not cover the continuous integration checks, which run separately on the
+   PR:
 
-   - [x] All local tests were run and passed for every commit in this series
+   - [ ] All local tests were run and passed for every commit in this series
      independently
+
+   Only the developer bot ticks this box. It ticks it after it has run all
+   local tests on every commit, and after the Pull Request bot has questioned
+   it about those runs and is satisfied with the answers. A person does not
+   tick it, the Pull Request bot never ticks or unticks it, and a passing
+   continuous integration run is never a reason to tick it.
 
 ## Title
 
