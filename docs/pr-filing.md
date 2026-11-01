@@ -10,7 +10,22 @@ understand what changed and why without specialized shorthand. Prefer ordinary
 words. If you must use a specialized term or acronym, define it in the same
 title, body, or commit message the first time it appears.
 
+**The audience rule.** The important thing is getting both the context and
+English correct for the audience. This rule applies to pull request titles,
+pull request descriptions, and every commit message:
+
+PR messages must be written for a reader who has no context. You must ensure
+that full context is given in plain English. This doesn't mean no technical
+details. But it does mean avoiding jargon. Do not assume the reader has any
+exposure to the development history.
+
 ## Commit series
+
+Every pull request you review must always follow the principle of minimal,
+self-contained, logical changes. Here minimal means the smallest possible
+change to achieve the outcome set out in the commit. Likewise: the smallest
+number of commits necessary to achieve the stated PR outcome. Never mix two
+unrelated changes in a commit or PR.
 
 - Rebase onto current `main` before opening or updating the PR.
 - Every commit is a **logical** change with a clear Conventional Commit message
