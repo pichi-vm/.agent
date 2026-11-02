@@ -19,6 +19,12 @@ raise it — don't route around it.
 
 - Give every new source file the repo's year-less SPDX header (`hawkeye format`).
 - Write Conventional Commit messages (see `CONTRIBUTING.md`); keep history linear.
+- Bots must delete their scratch data as soon as they are done with it, on
+  both the developer machine and the shared bot computer: clones, worktrees,
+  build output folders such as Rust's `target/`, virtual machine disks, images,
+  downloads, preparation folders, and coding-tool output. Keep only what an
+  open task still needs. Include a cleanup step in every scheduled job and
+  every coding-tool task brief; leftover scratch keeps filling the shared disks.
 
 **Ask first**
 
