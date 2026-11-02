@@ -4,20 +4,13 @@ A pull request presents a **finished proposal** for human reviewers: a series of
 logical commits rebased on `main`, described with Summary / Approach /
 Verification — not a stream of consciousness or a diary of how the work was done.
 
-Write the pull request **title**, **body**, and every **commit message** in
-simple, straightforward, humble English. A normal human reviewer should
-understand what changed and why without specialized shorthand. Prefer ordinary
-words. If you must use a specialized term or acronym, define it in the same
-title, body, or commit message the first time it appears.
-
-**The audience rule.** The important thing is getting both the context and
-English correct for the audience. This rule applies to pull request titles,
-pull request descriptions, and every commit message:
-
-PR messages must be written for a reader who has no context. You must ensure
-that full context is given in plain English. This doesn't mean no technical
-details. But it does mean avoiding jargon. Do not assume the reader has any
-exposure to the development history.
+**The audience rule.** Write pull request **titles**, **bodies**, and every
+**commit message** in clear, humble English, without overclaiming or
+salesmanship, for a reader with a solid general technical education who
+knows the pichi-vm architecture at a high level. Do not define common terms
+or project components. Give precise specifics: the exact failure, the
+mechanism, and the trade-offs. Give the immediate context for the change;
+do not assume familiarity with earlier pull requests or discussions.
 
 ## Commit series
 
@@ -29,7 +22,7 @@ unrelated changes in a commit or PR.
 
 - Rebase onto current `main` before opening or updating the PR.
 - Every commit is a **logical** change with a clear Conventional Commit message
-  in simple, straightforward, humble English (same rule as titles and bodies).
+  that follows the audience rule (same rule as titles and bodies).
 - **The developer bot (the bot that wrote the code) must run all of the
   repo’s local tests on every commit** in the series, not only at the tip,
   and they must pass. The repo’s continuous integration checks are separate:
@@ -44,14 +37,13 @@ unrelated changes in a commit or PR.
 
 Required headings, in order:
 
-1. **Summary** — What the change is, in simple, straightforward, humble English
-   (a few sentences). State the finished proposal, not a diary of attempts.
-   Avoid unexplained jargon.
+1. **Summary** — What the change is, following the audience rule (a few
+   sentences). State the finished proposal, not a diary of attempts.
 2. **Approach** — Only non-obvious decisions that explain the shape of the
-   result, still in simple, straightforward, humble English. Omit chronology,
-   false starts, and tooling narrative.
+   result, following the audience rule. Omit chronology, false starts, and
+   tooling narrative.
 3. **Verification** — How reviewers can tell it works: which checks, commands,
-   or review steps, described so a normal human can follow them. Prefer the
+   or review steps, described for the same technical audience. Prefer the
    repo’s continuous integration workflow as the source of truth when one
    exists. Include this checkbox, unticked when the PR is filed. It means the
    developer bot ran all local tests on every commit and they passed; it does
@@ -70,8 +62,8 @@ Required headings, in order:
 ## Title
 
 Short, Conventional Commits style when practical (`type(scope): summary`).
-Describe the finished change in simple, straightforward, humble English. Do not
-narrate how the work was produced.
+Describe the finished change following the audience rule. Do not narrate how
+the work was produced.
 
 ## What not to put in titles or bodies
 
@@ -80,9 +72,11 @@ narrate how the work was produced.
   product names
 - Merge holds, personal approval gates, or other process notes that belong in
   assistant chat only
-- Unexplained jargon, acronyms used as shorthand, or insider terms that a
-  reviewer would need outside context to understand (commit messages follow the
-  same ban under Commit series)
+- References to earlier pull requests or discussions that substitute for the
+  immediate context (commit messages follow the same rule)
+- Unexplained shorthand outside general technical knowledge and high-level
+  pichi-vm architecture, such as internal finding IDs (`F-PIC-002`), coined
+  labels, or bot-internal names (commit messages follow the same ban)
 
 Those belong in private notes or separate house-rule docs, not in the pull
 request title or body.
