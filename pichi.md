@@ -5,9 +5,18 @@ general guidelines in `karpathy-skills/CLAUDE.md` and the repo's own `CLAUDE.md`
 
 ## Definition of done
 
-A task is done only when the checks in this repo's `.github/workflows/ci.yml`
-pass locally (formatting, lint, tests, and any license/commit checks). Run them
-and confirm green before you report done.
+A task is done only when the required short checks in this repo's
+`.github/workflows/ci.yml` pass locally (formatting, lint, tests, and any
+license/commit checks). Run them and confirm green before you report done.
+
+Short local checks (build, unit tests, clippy, actionlint, and gitlint) remain
+required on every commit. No bot may run long local VM test suites that take
+hours (for example, 1 to 2 hours), such as full VM lifecycle runs or distro
+boot matrices. These run in PR CI; never delay a push or PR to run them
+locally. Lodown's root-only (sudo/loop-device) tests, tests that need
+hardware the developer's machine lacks (macOS, Windows, arm64), and
+pichi's registry write test (bots have no package-write token) may run
+only in CI. The bot still runs every other test its machine can run.
 
 Never weaken a check to make it pass: don't relax a lint, widen a license
 allowlist, add an `#[allow]`, or delete a test to go green. If a rule is wrong,
